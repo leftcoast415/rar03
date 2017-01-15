@@ -1,0 +1,14 @@
+<%= form_for(@category.businesses.build ) do |f| %>
+
+  <div class="field">
+    <%= f.label :business_name %>:<br>
+    <%= f.text_field :business_name %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :category_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

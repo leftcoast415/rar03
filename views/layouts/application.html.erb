@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rar03</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
+<%= link_to 'Home', welcome_home_path %>
+<div style="float:right">
+<% if user_signed_in? %> Signed in as <%= current_user.username %> |
+  <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+<% else %>
+  <%= link_to 'Login', new_user_session_path %> |
+  <%= link_to 'Sign Up', new_user_registration_path %>
+<% end %>
+<% if admin_signed_in? %> | <%= link_to 'Admin Logout', destroy_admin_session_path, :method => :delete %>
+<% end %></div>
+</div>
+
+<p>
+<header><span style="color:#E60000">R</span>ECORDING <span style="color:#E60000">A</span>RTIST <span style="color:#E60000">R</span>ESOURCES</header>
+</p>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+<%= form_for([@state, @state.cities.build]) do |f| %>
+
+<div class="field">
+    <%= f.label :city_name %>: <br>
+    <%= f.text_field :city_name %>
+</div>
+
+<div class="field">    
+    <%= f.hidden_field :state_id, :value => @state.id %>
+</div>
+
+<div class="actions">
+    <%= f.submit %>
+</div>
+
+<% end %>

@@ -1,0 +1,22 @@
+<div style="float:left">
+<% if admin_signed_in?%>
+  <%= link_to 'Edit', edit_state_path(@state) %> |
+<% end %>
+<%= link_to 'Select A Different State', welcome_home_path %>
+<br><br>
+<% if admin_signed_in?%>
+<strong><u>Add City</u></strong><br>
+<%= render 'cityform' %>
+<% end %>
+</div>
+
+<center>  
+<br>
+  <div id="page_title"><%= @state.state_name %></div>
+<br>
+<u><strong><p>Select your city:</p></u></strong>
+ <% @state.cities.order('city_name').each do |city| %>
+  <div id="list"><%= link_to "#{city.city_name}", state_city_path(@state, city ) %></div> 
+<% end %>
+
+</center>

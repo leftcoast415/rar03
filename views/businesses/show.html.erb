@@ -1,0 +1,61 @@
+<div style="float:left">
+<%= link_to 'Select A Different Business', state_city_category_path(@business.category.city.state, @business.category.city, @business.category) %>
+<% if admin_signed_in? %>
+| <%= link_to 'Edit', edit_business_path(@business) %>
+| <%= link_to 'Delete', [@business], method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</div>
+<div style="float:right">
+<strong>Business Last Updated:</strong> <%= @business.updated_at.strftime('%m/%d/%Y') %>&nbsp&nbsp
+</div>
+
+<center>
+ 
+<br><br>
+  <div style="font-size:3em"><strong><%= @business.business_name %></strong></div>
+  <div style="display:inline-block">  
+
+<br>
+  <% if @business.business_address? %><%= @business.business_address %> | <% end %>
+  <% if @business.business_phone? %>Ph: <%= @business.business_phone %> | <% end %>
+  <% if @business.business_website? %><a href="<%=@business.business_website%>" target="_blank"><%=@business.business_website%></a> | <% end %>
+  <% if @business.business_email? %>Email: <%= @business.business_email %> <% end %>
+  
+  <% unless @business.business_photo_url.blank? %>
+  <p>
+  <img src="<%= @business.business_photo_url %>" alt="some_text">
+  </p>
+  <% end %>
+  <p>
+  <div style="font-size:2em">
+  <% if @business.reviews.exists? %>
+    User Rating: <span style=color:red ><%= @business.reviews.average(:review_rating).round(1) %> </span>
+  <% else %>
+    User Rating: <span style=color:red >N/A</span>
+  <% end %></div>
+  </p>
+
+</center> 
+  
+  <div style="margin:0% 10%"><%= @business.business_description.html_safe %></div>
+
+<center>
+<br>
+<hr>
+  <h2>Add Your Review Of <%= @business.business_name %>:</h2>
+<% if user_signed_in? %>
+<%= render 'reviewform' %>
+<% else %>
+<%= link_to 'Please Sign In To Leave A Review', new_user_session_path %>
+<% end %>
+<br><br>
+<hr>
+
+<%= render 'reviews' %>
+
+
+
+
+</center>
+
+

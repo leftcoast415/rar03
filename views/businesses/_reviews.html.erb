@@ -1,0 +1,31 @@
+<h2><u>Latest Reviews</u> (<%= @business.reviews.count %> Total)</h2>
+
+
+
+<% @reviews.order('id DESC').each do |review| %>
+<% unless review.created_at == nil %>
+  <div class="review">
+  <p><strong>Rating:</strong> <span style=color:red><%= review.review_rating %></span> |
+  <strong>Reviewed by</strong> <%= review.user.username %> |
+  <strong><%= review.created_at.strftime("%m/%d/%Y") %></strong>
+  </p>
+  <p style="margin: 0% 10%">
+  <%= review.review_text %>
+  </p>
+    
+  
+
+
+    <% if review.user == current_user || admin_signed_in? %>
+    <%= link_to 'Delete Review', [review.business, review], method: :delete, data: { confirm:'Are you sure?' } %> | 
+    <%= link_to 'Edit Review', edit_business_review_path(review.business, review) %>
+    <% end %>
+  </p>
+  <hr style="border-top:dashed 1.5px">
+  </div>
+  
+   
+<% end %>
+<% end %>
+<br>
+<div class="digg_pagination"><%= will_paginate @reviews %></div>

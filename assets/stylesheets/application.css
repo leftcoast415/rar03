@@ -1,0 +1,161 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+header {
+    font-size: 4em;
+    font-weight: bold;
+    padding: 1em;
+    background: #4C4C4C;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#list{
+    display:inline-block;
+    width:100%;
+    height:40px;
+    border-radius:0%;
+    text-align:center;
+    font-size:2em;
+    line-height:40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#list:hover{
+    text-decoration:none;
+    background:#333;
+    color: red;
+}
+
+#list a:link {
+    text-decoration: none;
+    background: none;
+    display: inline-block;
+    width: 100%;
+    
+
+}
+#list a:visited{
+    text-decoration: none;
+    background: none;
+    display: inline-block;
+    width: 100%;
+
+}
+
+body {
+    background-color: #FAFAFF;
+}
+
+
+a:link {
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
+a:hover {
+    color: red;
+    background-color: #FAFAFF;
+}
+
+.notice {
+    color: red;
+    font-weight: bold;
+}
+
+.alert {
+    color: red;
+    font-weight: bold;
+}
+
+.field_with_errors {
+    background-color: red;
+    color: white;
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+#error_explanation {
+    border-width: thin;
+}
+
+#page_title {
+    font-size: 3em;
+    font-weight: bold;
+    padding: .75em;
+    background-color: #4C4C4C;
+    color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+    white-space: nowrap;
+}
+
+.digg_pagination {
+  background: none;
+  cursor: default;
+  margin: auto;
+  /* self-clearing method: */ }
+.digg_pagination a, .digg_pagination span, .digg_pagination em {
+    padding: 0.2em 0.5em;
+    margin: auto;
+    margin-right: 1px; }
+.digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+.digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: red;
+    color: white;
+    border: 1px solid red; }
+.digg_pagination a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid #4C4C4C; 
+    background: #4C4C4C }
+.digg_pagination a:hover, .digg_pagination a:focus {
+    color: white;
+    border-color: red;
+    background: red }
+.digg_pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+.digg_pagination .page_info b {
+    color: white;
+    background: #6aa6ed;
+    padding: 0.1em 0.25em; }
+.digg_pagination:after {
+    color: white;
+    corder-color: black;
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+* html .digg_pagination {
+    height: 1%; }
+*:first-child + html .digg_pagination {
+    overflow: hidden; }
+

@@ -1,0 +1,39 @@
+<div style="float:left">
+<%= link_to 'Select A Different Category', state_city_path(@category.city.state, @category.city) %> 
+<% if admin_signed_in? %>
+  | <%= link_to 'Edit', edit_state_city_category_path(@category.city.state, @category.city, @category) %> |
+<%= link_to 'Delete', [@category.city.state, @category.city, @category], method: :delete, data: { confirm: 'Are you sure?' } %>
+<br><br><strong><u>Add Business to <%= @category.category_name %></u></strong>
+<br>
+  
+<%= render 'businessform' %>
+<% end %>
+</div>
+
+<center>
+<br>
+  <div id="page_title"><%= @category.category_name %></div>
+<br>
+
+<u><strong><p>Select a business:</p></u></strong>
+
+<table>
+  <thead>
+    <tr style="background:#FAFAFF; color:black;">
+      <th>Business name</th>
+      <th>Business rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category.businesses.order('business_name').each do |business| %>
+      <tr>
+        <td><%= link_to "#{business.business_name}", business_path(business)%></td>
+        <td style="text-align:center"><%= link_to "#{business.reviews.average(:review_rating).round(1)}", business_path(business)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+</center>

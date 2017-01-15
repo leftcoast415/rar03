@@ -1,0 +1,23 @@
+<div style="float:left">
+<%= link_to 'Select A Different City', state_path(@city.state) %>
+<% if admin_signed_in? %>
+  | <%= link_to 'Edit', edit_state_city_path(@city.state, @city) %> |
+  <%= link_to 'Delete', [@city.state, @city], method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<br>
+<br><strong><u>Add Category to <%= @city.city_name %></u></strong>
+  <%= render 'categoryform' %>
+<% end %>
+</div>
+
+<center>
+<br>
+  <div id="page_title"><%= @city.city_name %>,  <%= @city.state.state_abbreviation %></div>
+<br>
+
+<u><strong><p>Select your category:</p></u></strong>
+<% @city.categories.order('category_name').each do |category| %>
+  <div id="list"><%= link_to "#{category.category_name}", state_city_category_path(@city.state, @city, category) %></div>
+<% end %>
+
+</center>
