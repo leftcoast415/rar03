@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, only: [:index, :new, :create, :destroy]
+  before_filter :authenticate_admin!, only: [:index, :new, :create, :destroy, :edit]
   respond_to :html
 
   def index

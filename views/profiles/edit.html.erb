@@ -1,0 +1,82 @@
+<% if @profile.user == current_user || admin_signed_in? %>
+
+Update your public profile.  This information can be viewed by anyone.  Do not include private information.<br><br>
+
+
+<%= form_for (@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <strong><%= f.label :avatar, 'Upload Profile Picture (JPG JPEG GIF PNG only)' %>:</strong><br>
+    <%= f.file_field :avatar %>
+  </div>
+  
+  Profile Picture Status:
+<% if @profile.avatar_status %>
+  <span style="color:green">Approved</span>
+<% else %>
+  <span style="color:red">Pending Approval</span>
+<% end %>
+
+<br>
+<% if admin_signed_in? %>
+  Approve Profile Picture: <%= f.check_box :avatar_status %>
+<% end %>
+
+<br><br>
+  <div class="field">
+    <%= f.label :first_name %>:<br>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>:<br>
+    <%= f.text_field :last_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :nickname %>:<br>
+    <%= f.text_field :nickname %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :location %>:<br>
+    <%= f.text_field :location %>
+  </div>  
+
+  <div class="field">
+    <%= f.label :age %>:<br>
+    <%= f.date_field :age %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :artist_genre %>:<br>
+    <%= f.text_field :artist_genre %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :bio %>:<br>
+    <%= f.text_area :bio, :rows => 10, :cols => 100 %>
+  </div>  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<% else %>
+<h1>
+<br>
+You do not have permission to edit this profile.  Please <%= link_to 'Login.', new_user_session_path %>
+</h1>
+<% end %>

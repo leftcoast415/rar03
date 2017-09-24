@@ -1,6 +1,6 @@
 class StatesController < ApplicationController
   before_action :set_state, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, only: [:index, :new, :create, :destroy]
+  before_filter :authenticate_admin!, only: [:index, :new, :create, :destroy, :edit]
 
   # GET /states
   # GET /states.json

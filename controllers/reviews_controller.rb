@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_admin!, only: [:index]
 
   respond_to :html
 
@@ -26,7 +27,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @review.business, notice: 'Review was successfully submitted.'
     else
-      redirect_to business_path(@review.business), notice: @review.errors.full_messages
+      render 'new', notice: @review.errors.full_messages
     end
   end
 

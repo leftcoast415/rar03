@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 
 after_filter :store_location
+before_action :stop_banned_user
 
 def store_location
   return unless request.get? 
@@ -32,6 +33,15 @@ end
 
 def after_sign_out_path_for(resource)
   request.referrer
+end
+
+def stop_banned_user
+  unless current_user.nil?
+    if current_user.banned?
+    sign_out current_user
+    redirect_to welcome_banned_path
+    end
+  end
 end
 
   protected

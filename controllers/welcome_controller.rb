@@ -6,4 +6,7 @@ class WelcomeController < ApplicationController
 
   def admin
   end
+  
+  def banned
+  end
 end

@@ -1,0 +1,28 @@
+<center>
+<h1>Profile Picture Management</h1>
+
+<% @profiles.each do |profile| %>
+    <% unless profile.avatar_status %>
+    <%= link_to "#{profile.user.username}", profile %><br><br>
+    <img src="<%= profile.avatar %>"</img><br>
+    <%= form_for (profile) do |f| %>
+            <% if profile.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+            <ul>
+                <% profile.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+             </div>
+            <% end %>
+        Approve Profile Picture: <%= f.check_box :avatar_status %>
+        <div class="actions">
+        <%= f.submit %>
+        </div>
+    <% end %><br>
+    <%= link_to 'Delete', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+<% end %>
+</center>

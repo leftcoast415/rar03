@@ -14,7 +14,9 @@
 <br>
   <div id="page_title"><%= @city.city_name %>,  <%= @city.state.state_abbreviation %></div>
 <br>
-
+<% if admin_signed_in? %>
+  <br>
+<% end %>
 <u><strong><p>Select your category:</p></u></strong>
 <% @city.categories.order('category_name').each do |category| %>
   <div id="list"><%= link_to "#{category.category_name}", state_city_category_path(@city.state, @city, category) %></div>

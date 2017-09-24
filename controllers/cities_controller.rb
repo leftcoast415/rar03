@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, only: [:index, :new, :create, :destroy]
+  before_filter :authenticate_admin!, only: [:index, :new, :create, :destroy, :edit]
 
   # GET /cities
   # GET /cities.json
